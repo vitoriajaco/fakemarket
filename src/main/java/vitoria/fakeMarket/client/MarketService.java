@@ -3,6 +3,8 @@ package vitoria.fakeMarket.client;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import vitoria.fakeMarket.enums.Category;
 import vitoria.fakeMarket.response.ProductResponse;
 
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MarketService {
@@ -50,4 +53,13 @@ public class MarketService {
 
         }
     }
+
+
+    public List<ProductResponse> buscarPorCategoria(Category categoria) {
+       List<ProductResponse> todosProdutos = getAllProducts();
+        return todosProdutos.stream().filter(produto -> produto.getCategory().equalsIgnoreCase
+                (categoria.getValorApi())).collect(Collectors.toList());
+    }
+
+
 }

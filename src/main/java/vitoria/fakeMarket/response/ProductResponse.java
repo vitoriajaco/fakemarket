@@ -19,8 +19,26 @@ public class ProductResponse {
     String category;
 /*    @JsonProperty("image")
     String image;*/
-  /*  @JsonProperty("rating")
-    List<String>rating;
-*/
+    @JsonProperty("rating")
+     Rating rating;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public Rating getRating() {
+        return rating;
+    }
 }
